@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.2d figter.iml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\Users\ramja\OneDrive\Documenten\GitHub\Fighter-game\2d figter\.idea\.idea.2d figter\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
