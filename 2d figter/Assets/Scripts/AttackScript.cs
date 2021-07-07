@@ -15,7 +15,8 @@ public class AttackScript : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 2f;
     public LayerMask playerMask;
-    
+
+    public HealthbarManager healthBar;
     void attackanim()
         {
             //play attack animation
@@ -50,20 +51,20 @@ public class AttackScript : MonoBehaviour
 
         foreach (Collider2D Player in hitEnemies)
         {
-            if (Player.CompareTag("Player2"))
-            {
-                if (!isBlocking)
-                {
-                    Debug.Log("Hit" + Player.name);
-                    FindObjectOfType<GameManager>().HurtP2();   
-                }
-            }
             if (Player.CompareTag("Player1"))
             {
                 if (!isBlocking)
                 {
-                    Debug.Log("Hit" + Player.name);
                     FindObjectOfType<GameManager>().HurtP1();
+                    healthBar.P1Health();
+                }
+            }
+            if (Player.CompareTag("Player2"))
+            {
+                if (!isBlocking)
+                {
+                    FindObjectOfType<GameManager>().HurtP2();
+                    healthBar.P2Health();
                 }
             }
         }
