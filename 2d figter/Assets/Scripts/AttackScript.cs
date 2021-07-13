@@ -9,7 +9,7 @@ public class AttackScript : MonoBehaviour
     public KeyCode block;
     private Animator anim;
     private bool isAttacking;
-    private bool isBlocking; 
+    public bool isBlocking; 
     private float timeBtwAttack;
     public float startTimeBtwAttack;
 
