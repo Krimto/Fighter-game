@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
     public KeyCode left;
     public KeyCode right;
     public KeyCode jump;
-    public KeyCode block;
 
     private Rigidbody2D theRB;
 
@@ -51,11 +50,7 @@ public class PlayerController : MonoBehaviour {
         {
              theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
         }
-        if (Input.GetKeyDown(block))
-        {
 
-        }
-    
 
         if(theRB.velocity.x < 0)
         {
@@ -70,4 +65,5 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("Grounded",isGrounded);
 
     }
+    
 }

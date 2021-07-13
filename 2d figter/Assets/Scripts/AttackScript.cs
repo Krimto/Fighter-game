@@ -6,6 +6,7 @@ public class AttackScript : MonoBehaviour
 {   
     
     public KeyCode attack;
+    public KeyCode block;
     private Animator anim;
     private bool isAttacking;
     private bool isBlocking; 
@@ -22,7 +23,6 @@ public class AttackScript : MonoBehaviour
             //play attack animation
             anim.SetTrigger("Attack");
         }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +33,25 @@ public class AttackScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(block))
+        {
+            blocking();
+        }
+
+        if (Input.GetKeyUp(block))
+        {
+            isBlocking = false;
+            anim.SetBool("Block", false);
+        }
         if(timeBtwAttack <= 0){
             if(Input.GetKeyDown(attack))
             {
-                Attack();
-                attackanim();
-                timeBtwAttack = startTimeBtwAttack;
+                if (!isBlocking)
+                {
+                    Attack();
+                    attackanim();
+                    timeBtwAttack = startTimeBtwAttack;
+                }
             }
         } else {
             timeBtwAttack -= Time.deltaTime;
@@ -53,7 +66,7 @@ public class AttackScript : MonoBehaviour
         {
             if (Player.CompareTag("Player1"))
             {
-                if (!isBlocking)
+                if (!Player.GetComponent<AttackScript>().isBlocking)
                 {
                     FindObjectOfType<GameManager>().HurtP1();
                     healthBar.P1Health();
@@ -61,13 +74,18 @@ public class AttackScript : MonoBehaviour
             }
             if (Player.CompareTag("Player2"))
             {
-                if (!isBlocking)
+                if (!Player.GetComponent<AttackScript>().isBlocking)
                 {
                     FindObjectOfType<GameManager>().HurtP2();
                     healthBar.P2Health();
                 }
             }
         }
+    }
+    void blocking()
+    {
+        isBlocking = true;
+        anim.SetBool("Block", true);
     }
     //deze functie is alleen om de range te zien van bijv de attackpoint range. deze kan dus weg als dit niet meer nodig is.
     private void OnDrawGizmosSelected()

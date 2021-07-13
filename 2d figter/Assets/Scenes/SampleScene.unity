@@ -1720,6 +1720,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027922887520822578, guid: 4f531930452c7dd43984d500707150da, type: 3}
+      propertyPath: block
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 2027922887520822581, guid: 4f531930452c7dd43984d500707150da, type: 3}
       propertyPath: m_Name
       value: FrankSprite
