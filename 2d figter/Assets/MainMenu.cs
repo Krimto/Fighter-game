@@ -12,7 +12,12 @@ public class MainMenu : MonoBehaviour
     
     public void QuitGame()
     {
-        Debug.Log("Quit game");
         Application.Quit();
+    }
+    
+    public void Restart()
+    {
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
     }
 }

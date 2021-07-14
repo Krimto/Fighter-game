@@ -19,6 +19,7 @@ public class AttackScript : MonoBehaviour
 
     public AudioSource hurtsound;
     public AudioSource blocksound;
+    public AudioSource swingSound;
 
     public HealthbarManager healthBar;
     void attackanim()
@@ -51,10 +52,10 @@ public class AttackScript : MonoBehaviour
             {
                 if (!isBlocking)
                 {
+                    swingSound.Play();
                     Attack();
                     attackanim();
                     timeBtwAttack = startTimeBtwAttack;
-                    blocksound.Play();
                 }
             }
         } else {
@@ -76,6 +77,10 @@ public class AttackScript : MonoBehaviour
                     healthBar.P1Health();
                     hurtsound.Play();
                 }
+                if (Player.GetComponent<AttackScript>().isBlocking)
+                {
+                    blocksound.Play();
+                }
             }
             if (Player.CompareTag("Player2"))
             {
@@ -84,6 +89,10 @@ public class AttackScript : MonoBehaviour
                     FindObjectOfType<GameManager>().HurtP2();
                     healthBar.P2Health();
                     hurtsound.Play();
+                }
+                if (Player.GetComponent<AttackScript>().isBlocking)
+                {
+                    blocksound.Play();
                 }
             }
             
