@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthbarManager : MonoBehaviour
 {
     public GameManager managerScript;
+    public AudioSource deathsound;
     
 
     public void P1Health()
@@ -28,6 +29,7 @@ public class HealthbarManager : MonoBehaviour
         if (managerScript.P1life < 1)
         {
             Destroy(GameObject.Find("P1-1"));
+            deathsound.Play();
         }
         
     }
@@ -53,6 +55,7 @@ public class HealthbarManager : MonoBehaviour
         if (managerScript.P2life < 1)
         {
             Destroy(GameObject.Find("P2-5"));
+             deathsound.Play();
         }
     }
 }

@@ -17,6 +17,9 @@ public class AttackScript : MonoBehaviour
     public float attackRange = 2f;
     public LayerMask playerMask;
 
+    public AudioSource hurtsound;
+    public AudioSource blocksound;
+
     public HealthbarManager healthBar;
     void attackanim()
         {
@@ -51,6 +54,7 @@ public class AttackScript : MonoBehaviour
                     Attack();
                     attackanim();
                     timeBtwAttack = startTimeBtwAttack;
+                    blocksound.Play();
                 }
             }
         } else {
@@ -70,6 +74,7 @@ public class AttackScript : MonoBehaviour
                 {
                     FindObjectOfType<GameManager>().HurtP1();
                     healthBar.P1Health();
+                    hurtsound.Play();
                 }
             }
             if (Player.CompareTag("Player2"))
@@ -78,8 +83,10 @@ public class AttackScript : MonoBehaviour
                 {
                     FindObjectOfType<GameManager>().HurtP2();
                     healthBar.P2Health();
+                    hurtsound.Play();
                 }
             }
+            
         }
     }
     void blocking()
